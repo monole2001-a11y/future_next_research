@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 미래 성장 산업 & 주식 투자 리서치</title>
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --surface: #16161d;
+      --surface2: #1e1e28;
+      --surface3: #232331;
+      --border: #2a2a38;
+      --accent: #7c6ef7;
+      --accent2: #56cfb2;
+      --accent3: #f7a24b;
+      --warn: #f76b6b;
+      --blue: #63a7ff;
+      --text: #e8e8f0;
+      --text-muted: #9a9aaa;
+      --text-dim: #626276;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Pretendard', 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.7;
+      padding-bottom: 80px;
+    }
+
+    a { color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(86,207,178,0.35); }
+    a:hover { color: #8ff2dc; border-color: rgba(143,242,220,0.8); }
+
+    .hero {
+      background: linear-gradient(135deg, #191331 0%, #10212f 48%, #11151f 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 72px 40px 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%;
+      transform: translateX(-50%);
+      width: 720px; height: 360px;
+      background: radial-gradient(ellipse, rgba(124,110,247,0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(124,110,247,0.15);
+      border: 1px solid rgba(124,110,247,0.35);
+      color: #b8afff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 4vw, 52px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 760px;
+      margin: 0 auto 28px;
+      position: relative;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .hero-meta-item { font-size: 13px; color: var(--text-dim); }
+    .hero-meta-item strong { color: var(--text-muted); }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .notice {
+      margin-top: 28px;
+      background: rgba(247,162,75,0.09);
+      border: 1px solid rgba(247,162,75,0.28);
+      border-radius: 14px;
+      padding: 18px 20px;
+      color: #d7c7b6;
+      font-size: 14px;
+    }
+
+    .section { margin-top: 58px; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .section-label .num {
+      width: 28px; height: 28px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-label h2 {
+      font-size: 22px;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+    }
+
+    .section-copy {
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 860px;
+      margin: -8px 0 22px;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--card-color, var(--accent));
+      border-radius: 14px 14px 0 0;
+    }
+
+    .label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .value {
+      font-size: 30px;
+      font-weight: 850;
+      letter-spacing: -0.03em;
+      color: var(--card-color, var(--accent));
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .desc { font-size: 13px; color: var(--text-muted); }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .insight-card,
+    .risk-card,
+    .summary-box,
+    .timeline,
+    .bar-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .insight-card { padding: 22px; }
+    .insight-card h3, .risk-card h3 { font-size: 16px; font-weight: 750; margin-bottom: 8px; }
+    .insight-card p, .risk-card p { font-size: 14px; color: var(--text-muted); }
+    .mini { font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .badge-green { color: var(--accent2); background: rgba(86,207,178,0.14); border: 1px solid rgba(86,207,178,0.3); }
+    .badge-yellow { color: var(--accent3); background: rgba(247,162,75,0.14); border: 1px solid rgba(247,162,75,0.3); }
+    .badge-red { color: var(--warn); background: rgba(247,107,107,0.14); border: 1px solid rgba(247,107,107,0.3); }
+    .badge-purple { color: #b8afff; background: rgba(124,110,247,0.14); border: 1px solid rgba(124,110,247,0.3); }
+    .badge-blue { color: var(--blue); background: rgba(99,167,255,0.14); border: 1px solid rgba(99,167,255,0.3); }
+
+    .two-col, .risk-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .bar-section { padding: 26px 26px 20px; }
+    .bar-section h3 { font-size: 15px; color: var(--text-muted); margin-bottom: 18px; }
+    .bar-item { margin-bottom: 15px; }
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .bar-label .name { color: var(--text); font-weight: 650; }
+    .bar-label .pct { color: var(--text-muted); font-weight: 800; }
+    .bar-track {
+      height: 8px;
+      background: var(--surface2);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      width: var(--w);
+      background: var(--bar-color, var(--accent));
+      border-radius: 99px;
+    }
+
+    .table-wrap {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow-x: auto;
+      background: var(--surface);
+    }
+
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th {
+      text-align: left;
+      background: var(--surface2);
+      color: var(--text-muted);
+      padding: 13px 14px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 13px 14px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+
+    td strong { color: var(--text); }
+    tr:hover td { background: rgba(30,30,40,0.55); }
+
+    .risk-card { padding: 20px; }
+    .risk-card ul, .summary-box ul { list-style: none; display: grid; gap: 8px; }
+    .risk-card li, .summary-box li {
+      color: var(--text-muted);
+      font-size: 14px;
+      border-top: 1px solid rgba(42,42,56,0.7);
+      padding-top: 8px;
+    }
+    .risk-card li:first-child, .summary-box li:first-child { border-top: 0; padding-top: 0; }
+
+    .timeline { padding: 22px; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 18px;
+      padding: 0 0 22px;
+      position: relative;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .time { color: var(--text-muted); font-size: 13px; font-weight: 800; }
+    .timeline-item h3 { font-size: 15px; margin-bottom: 5px; }
+    .timeline-item p { color: var(--text-muted); font-size: 14px; }
+
+    .summary-box { padding: 24px; }
+    .summary-box h3 { font-size: 18px; margin-bottom: 12px; }
+
+    .source-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+      font-size: 13px;
+    }
+    .source-list a {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 12px;
+    }
+
+    .footer-note {
+      margin-top: 28px;
+      color: var(--text-dim);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .hero { padding: 52px 20px 42px; text-align: left; }
+      .hero p { margin-left: 0; margin-right: 0; }
+      .hero-meta { justify-content: flex-start; gap: 12px 18px; }
+      .container { padding: 0 16px; }
+      .two-col, .risk-grid { grid-template-columns: 1fr; }
+      .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .stat-card { padding: 18px 14px; }
+      .value { font-size: 25px; }
+      .section { margin-top: 46px; }
+      .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+      table { min-width: 680px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-tag">Research Dashboard · 2026</div>
+    <h1>2026 미래 성장 산업 &<br /><span>주식 투자 리서치</span></h1>
+    <p>미국·글로벌 상장기업을 중심으로 AI 인프라, 반도체, 전력, 로봇, 헬스케어 AI, 우주·방산, 사이버보안, 에너지 전환을 장기 투자 관점에서 비교한 교육용 리서치입니다.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>기준일</strong> 2026-05-25</div>
+      <div class="hero-meta-item"><strong>관점</strong> 장기 산업 구조</div>
+      <div class="hero-meta-item"><strong>용도</strong> 개인 리서치·학습</div>
+      <div class="hero-meta-item"><strong>주의</strong> 매수·매도 추천 아님</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="notice">
+      이 문서는 투자 판단을 돕기 위한 리서치/교육 자료입니다. 특정 종목의 매수·매도·보유를 권유하지 않으며, 최신 주가·밸류에이션은 변동성이 크므로 투자 전 반드시 원문 공시와 실시간 데이터를 재확인해야 합니다.
+    </div>
+
+    <section class="section">
+      <div class="section-label"><div class="num">1</div><h2>핵심 투자 테마 요약</h2></div>
+      <p class="section-copy">2026년 성장 산업의 공통 분모는 “AI가 소프트웨어만이 아니라 물리 인프라, 전력, 반도체 장비, 보안, 의료·국방 데이터 체계까지 끌고 간다”는 점입니다.</p>
+      <div class="stat-grid">
+        <div class="stat-card" style="--card-color: var(--accent);"><div class="label">AI Infrastructure</div><div class="value">$487B</div><div class="desc">2026년 AI 인프라 지출 전망, YoY 약 53% 성장 <a href="https://www.idc.com/resource-center/blog/ai-infrastructure-spending-caps-historic-year-at-90-billion-in-q4-2025-2029-spending-to-eclipse-1-trillion/">IDC</a></div></div>
+        <div class="stat-card" style="--card-color: var(--accent2);"><div class="label">Semiconductor</div><div class="value">$1.3T+</div><div class="desc">2026년 전세계 반도체 매출 전망 <a href="https://www.gartner.com/en/newsroom/press-releases/2026-04-08-gartner-forecasts-worldwide-semiconductor-revenue-to-exceed-us-dollars-one-point-3-trillion-in-2026">Gartner</a></div></div>
+        <div class="stat-card" style="--card-color: var(--accent3);"><div class="label">Data Center Power</div><div class="value">415TWh</div><div class="desc">2024년 데이터센터 전력 소비, 2035년 약 1,200TWh 전망 <a href="https://www.iea.org/reports/energy-and-ai/executive-summary">IEA</a></div></div>
+        <div class="stat-card" style="--card-color: var(--blue);"><div class="label">Cybersecurity</div><div class="value">$240B</div><div class="desc">2026년 정보보안 지출 전망치로 인용되는 Gartner 수치 <a href="https://cybersecurityventures.com/wp-content/uploads/2023/11/Cybersecurity-Market-Report-2026.pdf">Cybersecurity Ventures</a></div></div>
+        <div class="stat-card" style="--card-color: var(--warn);"><div class="label">Healthcare AI</div><div class="value">$50.7B</div><div class="desc">2026년 글로벌 헬스케어 AI 시장 추정 <a href="https://www.grandviewresearch.com/industry-analysis/artificial-intelligence-ai-healthcare-market">Grand View Research</a></div></div>
+        <div class="stat-card" style="--card-color: var(--accent2);"><div class="label">Space Economy</div><div class="value">$613B</div><div class="desc">2024년 글로벌 우주 경제 규모, YoY 7.8% 성장 <a href="https://www.spacefoundation.org/2025/07/22/the-space-report-2025-q2/">Space Foundation</a></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label"><div class="num">2</div><h2>거시 환경</h2></div>
+      <div class="insight-grid">
+        <div class="insight-card"><span class="badge badge-purple">금리</span><h3>Fed는 3.50%~3.75% 구간을 유지</h3><p>2026년 4월 29일 FOMC 기준 연방기금금리 목표 범위는 3.50%~3.75%입니다. 성장주 밸류에이션에는 할인율 부담이 여전히 남아 있습니다.</p><div class="mini"><a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20260429a.htm">Federal Reserve</a></div></div>
+        <div class="insight-card"><span class="badge badge-yellow">인플레이션</span><h3>CPI는 에너지·서비스 비용이 변수</h3><p>2026년 4월 CPI는 전월 대비 0.6%, 전년 대비 3.8% 상승했습니다. 장기 성장 산업도 금리 재상승 국면에서는 멀티플 압박을 받을 수 있습니다.</p><div class="mini"><a href="https://www.bls.gov/news.release/cpi.htm">BLS CPI</a></div></div>
+        <div class="insight-card"><span class="badge badge-green">경기</span><h3>미국 실질 GDP는 Q1 2.0% 성장</h3><p>BEA의 2026년 1분기 advance estimate는 연율 2.0% 성장입니다. 경기 침체보다 “성장 둔화 속 선택적 투자”에 가까운 환경입니다.</p><div class="mini"><a href="https://www.bea.gov/news/2026/gdp-advance-estimate-1st-quarter-2026">BEA GDP</a></div></div>
+        <div class="insight-card"><span class="badge badge-red">지정학</span><h3>에너지·공급망 리스크가 AI 비용에 연결</h3><p>중동 리스크, 중국 수출통제, 대만 해협 리스크는 원가·납기·CAPEX 회수 기간에 직접 영향을 줍니다. 특히 반도체와 전력 장비 병목은 산업 간 공통 리스크입니다.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label"><div class="num">3</div><h2>산업별 성장 전망</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>산업</th><th>시장 규모 / CAGR</th><th>수요 동인</th><th>병목 요소</th><th>대표 상장기업</th></tr></thead>
+          <tbody>
+            <tr><td><strong>AI 인프라</strong></td><td>2026년 $487B, 2025년부터 5년 CAGR 약 31% <a href="https://www.idc.com/resource-center/blog/ai-infrastructure-spending-caps-historic-year-at-90-billion-in-q4-2025-2029-spending-to-eclipse-1-trillion/">IDC</a></td><td>LLM 학습·추론, 기업 AI 전환, GPU/ASIC 클러스터</td><td>GPU, HBM, 네트워킹, 전력·냉각, 데이터센터 허가</td><td>NVDA, MSFT, AMZN, GOOGL, META, AVGO</td></tr>
+            <tr><td><strong>반도체</strong></td><td>2026년 $1.3T 초과 전망 <a href="https://www.gartner.com/en/newsroom/press-releases/2026-04-08-gartner-forecasts-worldwide-semiconductor-revenue-to-exceed-us-dollars-one-point-3-trillion-in-2026">Gartner</a></td><td>AI 가속기, HBM, 데이터센터 네트워킹, 첨단 패키징</td><td>TSMC 선단공정, ASML EUV, 메모리 가격 급등</td><td>TSM, ASML, NVDA, AMD, AVGO</td></tr>
+            <tr><td><strong>데이터센터 / 전력</strong></td><td>데이터센터 전력 소비 2024년 415TWh, 2035년 base case 1,200TWh <a href="https://www.iea.org/reports/energy-and-ai/executive-summary">IEA</a></td><td>AI 서버 전력 밀도, 전력망 증설, 냉각·UPS</td><td>전력망 접속 대기, 변압기, 지역 반발, 물 사용</td><td>ETN, VRT, PWR, NEE, CEG</td></tr>
+            <tr><td><strong>로봇</strong></td><td>미국 산업용 로봇 운영 재고 393,700대, 2024년 설치 34,200대 <a href="https://ifr.org/downloads/press_docs/2025-09-25-IFR_press_release_Americas_in_English.pdf">IFR</a></td><td>제조 리쇼어링, 물류 자동화, 휴머노이드 실험</td><td>안전 인증, 원가, 실제 작업 성공률, 사이클 타임</td><td>TSLA, ABBNY, ISRG, TER, SYM</td></tr>
+            <tr><td><strong>헬스케어 AI</strong></td><td>2026년 $50.7B, 2026~2033 CAGR 38.9% 추정 <a href="https://www.grandviewresearch.com/industry-analysis/artificial-intelligence-ai-healthcare-market">Grand View Research</a></td><td>진단·영상, 신약개발, 임상 운영, 보험 심사</td><td>규제, 개인정보, 임상 검증, 병원 IT 통합</td><td>LLY, ISRG, GEHC, TMO, GOOGL</td></tr>
+            <tr><td><strong>우주 / 방산</strong></td><td>2024년 글로벌 우주 경제 $613B, YoY 7.8% <a href="https://www.spacefoundation.org/2025/07/22/the-space-report-2025-q2/">Space Foundation</a></td><td>위성통신, ISR, 발사비 하락, 지정학</td><td>정부 예산, 발사 실패, 수익화 지연, 규제</td><td>LMT, NOC, RTX, LHX, RKLB</td></tr>
+            <tr><td><strong>사이버보안</strong></td><td>2026년 정보보안 지출 $240B 전망으로 인용 <a href="https://cybersecurityventures.com/wp-content/uploads/2023/11/Cybersecurity-Market-Report-2026.pdf">Cybersecurity Ventures</a></td><td>AI 피싱, 클라우드, ID 보안, 규제·보험</td><td>벤더 통합, 가격 압박, 플랫폼 경쟁</td><td>CRWD, PANW, ZS, FTNT, MSFT</td></tr>
+            <tr><td><strong>에너지 전환</strong></td><td>핵심 청정기술 제조 투자 2024년 $200B 미만 <a href="https://www.iea.org/reports/energy-technology-perspectives-2026/energy-technology-manufacturing-and-trade">IEA</a></td><td>전력 수요, 배터리, 그리드, 원전·재생에너지</td><td>금리, 정책 보조금, 중국 공급과잉, 송전망</td><td>NEE, CEG, FSLR, ENPH, TSLA</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label"><div class="num">4</div><h2>핵심 기업 분석</h2></div>
+      <div class="insight-grid">
+        <div class="insight-card"><span class="badge badge-purple">NVDA</span><h3>AI 컴퓨트의 병목을 가격으로 전환</h3><p>FY2026 매출 $215.94B, YoY 65.47% 성장으로 집계됩니다. 관찰 포인트는 Blackwell/Rubin 전환, HBM 공급, 고객 집중도, 총마진 유지입니다.</p><div class="mini"><a href="https://stockanalysis.com/stocks/nvda/">StockAnalysis</a></div></div>
+        <div class="insight-card"><span class="badge badge-blue">MSFT</span><h3>엔터프라이즈 AI 배포의 기본 레이어</h3><p>Azure, Copilot, OpenAI 생태계가 강점입니다. 단기 리스크는 AI CAPEX가 FCF와 감가상각에 주는 압박입니다.</p><div class="mini"><a href="https://www.microsoft.com/en-us/Investor/earnings">Microsoft IR</a></div></div>
+        <div class="insight-card"><span class="badge badge-green">GOOGL / AMZN / META</span><h3>광고·커머스·클라우드 현금흐름으로 AI 인프라 경쟁</h3><p>Alphabet은 TPU와 검색/클라우드, Amazon은 AWS와 물류 자동화, Meta는 광고 추천·오픈 모델 전략을 축으로 합니다. 공통 질문은 CAPEX 회수 속도입니다.</p></div>
+        <div class="insight-card"><span class="badge badge-yellow">TSM / ASML / AVGO / AMD</span><h3>AI 공급망의 제조·장비·ASIC 레이어</h3><p>TSMC와 ASML은 선단공정 병목, Broadcom은 커스텀 ASIC·네트워킹, AMD는 GPU 대체 공급망의 선택지입니다. 지정학과 사이클 변동성이 핵심 리스크입니다.</p></div>
+        <div class="insight-card"><span class="badge badge-red">TSLA / PLTR</span><h3>옵션 가치가 큰 만큼 검증 부담도 큼</h3><p>Tesla는 자율주행·로봇·에너지 저장을, Palantir는 AI 운영체제/AIP 확산을 내세웁니다. 현재 가격에는 미래 사업 성공 확률이 상당 부분 반영될 수 있습니다.</p></div>
+        <div class="insight-card"><span class="badge badge-green">CRWD / LLY</span><h3>AI 외부의 구조적 성장 축</h3><p>CrowdStrike는 클라우드 보안·ID·AI 보안 운영, Eli Lilly는 GLP-1 비만·당뇨 치료제 수요가 핵심입니다. 리스크는 각각 고멀티플과 생산능력/보험급여입니다.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label"><div class="num">5</div><h2>밸류에이션 비교</h2></div>
+      <p class="section-copy">아래 표는 2026년 5월 기준 공개 금융 데이터와 집계 사이트를 바탕으로 한 상대 비교입니다. 실시간 주가 변동으로 P/E, Forward P/E, P/S는 빠르게 바뀔 수 있어 “정확한 매수 가격”이 아니라 멀티플 부담의 방향성을 보는 용도입니다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>기업</th><th>테마</th><th>P/E</th><th>Forward P/E</th><th>P/S</th><th>성장·마진·FCF 관찰</th><th>해석</th></tr></thead>
+          <tbody>
+            <tr><td><strong>NVIDIA</strong></td><td>AI GPU</td><td>~46x</td><td>~27x</td><td>고P/S</td><td>FY2026 매출 +65.47%, FCF 약 $96B 언급 <a href="https://stockanalysis.com/stocks/nvda/">StockAnalysis</a></td><td><span class="badge badge-yellow">고성장 대비 프리미엄</span></td></tr>
+            <tr><td><strong>Microsoft</strong></td><td>AI 클라우드</td><td>중고멀티플</td><td>~26x 전후</td><td>~10x대</td><td>영업마진 40%대, AI CAPEX 확대 <a href="https://www.microsoft.com/en-us/Investor/earnings">IR</a></td><td><span class="badge badge-green">품질 프리미엄</span></td></tr>
+            <tr><td><strong>Alphabet</strong></td><td>검색·클라우드·TPU</td><td>20x대</td><td>20x대 중후반</td><td>중간</td><td>Cloud·AI CAPEX 확대, 광고 회복력 관찰 <a href="https://abc.xyz/investor/">IR</a></td><td><span class="badge badge-green">상대 저멀티플</span></td></tr>
+            <tr><td><strong>Amazon</strong></td><td>AWS·물류</td><td>변동 큼</td><td>30x대</td><td>낮음</td><td>Q1 2026 매출 +17%로 보도, FCF는 CAPEX 영향 <a href="https://ir.aboutamazon.com/quarterly-results/default.aspx">IR</a></td><td><span class="badge badge-yellow">CAPEX 회수형</span></td></tr>
+            <tr><td><strong>Meta</strong></td><td>AI 광고·추천</td><td>~22x</td><td>~18x</td><td>~7x</td><td>TTM 매출 $214.96B, 영업마진 41.21%, FCF $48.25B <a href="https://stockanalysis.com/stocks/meta/statistics/">StockAnalysis</a></td><td><span class="badge badge-green">현금흐름 대비 낮은 편</span></td></tr>
+            <tr><td><strong>TSMC</strong></td><td>파운드리</td><td>20x대</td><td>20x대</td><td>중간</td><td>선단공정·AI 수요, 대만 지정학 <a href="https://investor.tsmc.com/english/quarterly-results">IR</a></td><td><span class="badge badge-yellow">핵심 병목 프리미엄</span></td></tr>
+            <tr><td><strong>ASML</strong></td><td>EUV 장비</td><td>30x~40x대</td><td>30x대</td><td>높음</td><td>EUV 독점성, 고객 투자 사이클 민감 <a href="https://www.asml.com/en/investors/financial-results">IR</a></td><td><span class="badge badge-purple">희소성 프리미엄</span></td></tr>
+            <tr><td><strong>Broadcom</strong></td><td>ASIC·네트워킹</td><td>고멀티플</td><td>20x대</td><td>높음</td><td>커스텀 AI 칩과 VMware 통합 <a href="https://investors.broadcom.com/financial-information/quarterly-results">IR</a></td><td><span class="badge badge-yellow">AI ASIC 기대 반영</span></td></tr>
+            <tr><td><strong>AMD</strong></td><td>GPU·CPU</td><td>높음</td><td>30x대</td><td>중간</td><td>MI 시리즈 확대, NVIDIA 대비 점유율 관찰 <a href="https://ir.amd.com/financial-information/quarterly-results">IR</a></td><td><span class="badge badge-red">실행 검증 필요</span></td></tr>
+            <tr><td><strong>CRWD / PLTR / TSLA / LLY</strong></td><td>보안·AI SW·로봇·헬스케어</td><td>섹터별 편차 큼</td><td>높은 편</td><td>높은 편</td><td>성장률은 강하지만 기대치가 가격에 크게 반영될 수 있음 <a href="https://stockanalysis.com/">StockAnalysis</a></td><td><span class="badge badge-red">기대치 리스크 큼</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label"><div class="num">6</div><h2>리스크 분석</h2></div>
+      <div class="risk-grid">
+        <div class="risk-card">
+          <h3>시스템 리스크</h3>
+          <ul>
+            <li><strong>AI 버블 리스크:</strong> 매출보다 CAPEX와 밸류에이션이 먼저 달리는 구간에서는 기대치 하향이 가격을 크게 흔들 수 있습니다.</li>
+            <li><strong>CAPEX 회수 지연:</strong> 데이터센터 투자가 감가상각·전력비·임대료로 먼저 반영되고 AI 매출은 늦게 나타날 수 있습니다.</li>
+            <li><strong>금리 상승:</strong> CPI 재가속 또는 유가 충격은 장기 성장주의 할인율 부담으로 연결됩니다.</li>
+            <li><strong>공급망:</strong> HBM, CoWoS, EUV, 변압기, 송전망 병목은 성장의 속도 제한 장치입니다.</li>
+          </ul>
+        </div>
+        <div class="risk-card">
+          <h3>기업별 리스크</h3>
+          <ul>
+            <li><strong>고객 집중:</strong> AI 칩 매출은 소수 hyperscaler CAPEX에 민감합니다.</li>
+            <li><strong>규제:</strong> 반독점, 데이터 프라이버시, 의료 AI 승인, 수출통제가 성장 경로를 바꿀 수 있습니다.</li>
+            <li><strong>경쟁 심화:</strong> 커스텀 ASIC, 오픈소스 모델, 플랫폼 번들링은 가격 결정력을 낮출 수 있습니다.</li>
+            <li><strong>환율:</strong> 달러 강세는 해외 매출과 한국 투자자의 실제 수익률에 영향을 줍니다.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label"><div class="num">7</div><h2>투자 사이클 타임라인</h2></div>
+      <div class="timeline">
+        <div class="timeline-item"><div class="time">2024-2025</div><div><h3>AI 학습 인프라 1차 증설</h3><p>NVIDIA GPU, HBM, 데이터센터 착공이 주도했습니다. 수혜는 반도체·장비·클라우드 인프라에 집중됐습니다.</p></div></div>
+        <div class="timeline-item"><div class="time">2026</div><div><h3>추론·전력·ASIC로 확산</h3><p>IDC는 2026년 AI 인프라 지출을 $487B로 봅니다. 투자자는 매출 성장뿐 아니라 전력·냉각·네트워킹 병목을 함께 봐야 합니다.</p></div></div>
+        <div class="timeline-item"><div class="time">2027-2028</div><div><h3>CAPEX 회수 검증 구간</h3><p>Copilot, AI agent, 광고 추천, 클라우드 AI 서비스가 투자 대비 현금흐름으로 연결되는지 확인하는 시기입니다.</p></div></div>
+        <div class="timeline-item"><div class="time">2029-2030+</div><div><h3>승자와 과잉투자 구분</h3><p>실사용 수요가 누적되는 플랫폼·인프라 기업과, 기대만 앞섰던 기업의 차이가 벌어질 가능성이 큽니다.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label"><div class="num">8</div><h2>투자자 유형별 전략</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>유형</th><th>우선순위</th><th>접근 방식</th><th>피해야 할 함정</th></tr></thead>
+          <tbody>
+            <tr><td><strong>보수형</strong></td><td>현금흐름, 낮은 부채, 플랫폼 지배력</td><td>MSFT, GOOGL, META 같은 현금창출 기업과 광범위 ETF 중심</td><td>단일 고멀티플 테마 집중</td></tr>
+            <tr><td><strong>성장형</strong></td><td>AI 인프라, 반도체, 사이버보안</td><td>NVDA·AVGO·TSM·CRWD 등 핵심 병목 기업을 분산 관찰</td><td>성장률 둔화에도 같은 멀티플을 가정</td></tr>
+            <tr><td><strong>공격형</strong></td><td>로봇, 우주, AI 소프트웨어 옵션</td><td>TSLA, PLTR, RKLB 등은 손실 허용 범위를 먼저 정함</td><td>스토리를 실적 검증 없이 과대평가</td></tr>
+            <tr><td><strong>장기 적립식</strong></td><td>시장 전체와 산업 ETF</td><td>가격보다 정해진 주기와 리밸런싱 규칙을 중시</td><td>고점 공포·저점 공포로 적립 중단</td></tr>
+            <tr><td><strong>테마 분산형</strong></td><td>AI + 전력 + 보안 + 헬스케어</td><td>한 테마 안에서도 칩·클라우드·전력·보안을 나눔</td><td>겉으로 다른 종목이 실제로는 같은 AI CAPEX에 묶이는 착시</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label"><div class="num">9</div><h2>워치리스트</h2></div>
+      <div class="two-col">
+        <div class="bar-section">
+          <h3>가격보다 먼저 볼 사업 지표</h3>
+          <div class="bar-item"><div class="bar-label"><span class="name">Hyperscaler CAPEX 가이던스</span><span class="pct">핵심</span></div><div class="bar-track"><div class="bar-fill" style="--w:96%; --bar-color: var(--accent);"></div></div></div>
+          <div class="bar-item"><div class="bar-label"><span class="name">AI 매출 run-rate / backlog</span><span class="pct">핵심</span></div><div class="bar-track"><div class="bar-fill" style="--w:90%; --bar-color: var(--accent2);"></div></div></div>
+          <div class="bar-item"><div class="bar-label"><span class="name">전력 확보량 / 데이터센터 지연</span><span class="pct">상</span></div><div class="bar-track"><div class="bar-fill" style="--w:82%; --bar-color: var(--accent3);"></div></div></div>
+          <div class="bar-item"><div class="bar-label"><span class="name">FCF margin / 감가상각 증가</span><span class="pct">상</span></div><div class="bar-track"><div class="bar-fill" style="--w:80%; --bar-color: var(--blue);"></div></div></div>
+          <div class="bar-item"><div class="bar-label"><span class="name">HBM·패키징 공급</span><span class="pct">중상</span></div><div class="bar-track"><div class="bar-fill" style="--w:74%; --bar-color: var(--warn);"></div></div></div>
+        </div>
+        <div class="risk-card">
+          <h3>실적 발표 체크리스트</h3>
+          <ul>
+            <li>AI 관련 매출이 “예약·파일럿”인지 “반복 매출”인지 구분</li>
+            <li>CAPEX 증가가 매출총이익률과 FCF를 얼마나 누르는지 확인</li>
+            <li>GPU/ASIC 주문이 한 고객에 집중되어 있는지 확인</li>
+            <li>가이던스 상향이 물량 때문인지 가격 때문인지 분리</li>
+            <li>규제·수출통제·반독점 소송의 비용화 가능성 점검</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label"><div class="num">10</div><h2>결론</h2></div>
+      <div class="summary-box">
+        <h3>“지금 사야 하는가”보다 “어떤 조건에서 매력도가 높아지는가”</h3>
+        <ul>
+          <li><strong>AI 인프라:</strong> 성장률이 유지되면서 FCF 훼손이 제한될 때 매력도가 높아집니다.</li>
+          <li><strong>반도체:</strong> 선단공정·HBM·패키징 병목이 풀리지 않는 동안 가격 결정력이 유지될 수 있습니다.</li>
+          <li><strong>전력:</strong> AI 수요가 데이터센터에서 실제 전력 계약으로 이어지는지가 핵심입니다.</li>
+          <li><strong>소프트웨어:</strong> AI 기능이 사용량·가격·순매출유지율로 전환되는 기업을 선별해야 합니다.</li>
+          <li><strong>리스크 관리:</strong> 같은 AI 테마라도 매출원이 같은 hyperscaler CAPEX에 묶여 있으면 분산 효과가 약합니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label"><div class="num">S</div><h2>Sources</h2></div>
+      <div class="source-list">
+        <a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20260429a.htm">Federal Reserve · FOMC Statement, Apr 29 2026</a>
+        <a href="https://www.bls.gov/news.release/cpi.htm">BLS · Consumer Price Index, Apr 2026</a>
+        <a href="https://www.bea.gov/news/2026/gdp-advance-estimate-1st-quarter-2026">BEA · GDP Advance Estimate Q1 2026</a>
+        <a href="https://www.idc.com/resource-center/blog/ai-infrastructure-spending-caps-historic-year-at-90-billion-in-q4-2025-2029-spending-to-eclipse-1-trillion/">IDC · AI Infrastructure Spending Forecast</a>
+        <a href="https://www.gartner.com/en/newsroom/press-releases/2026-04-08-gartner-forecasts-worldwide-semiconductor-revenue-to-exceed-us-dollars-one-point-3-trillion-in-2026">Gartner · Semiconductor Revenue Forecast 2026</a>
+        <a href="https://www.iea.org/reports/energy-and-ai/executive-summary">IEA · Energy and AI Executive Summary</a>
+        <a href="https://www.iea.org/reports/energy-technology-perspectives-2026/energy-technology-manufacturing-and-trade">IEA · Energy Technology Perspectives 2026</a>
+        <a href="https://ifr.org/downloads/press_docs/2025-09-25-IFR_press_release_Americas_in_English.pdf">IFR · World Robotics Americas 2025</a>
+        <a href="https://www.grandviewresearch.com/industry-analysis/artificial-intelligence-ai-healthcare-market">Grand View Research · AI in Healthcare Market</a>
+        <a href="https://www.spacefoundation.org/2025/07/22/the-space-report-2025-q2/">Space Foundation · The Space Report 2025 Q2</a>
+        <a href="https://cybersecurityventures.com/wp-content/uploads/2023/11/Cybersecurity-Market-Report-2026.pdf">Cybersecurity Ventures · 2026 Cybersecurity Market Report</a>
+        <a href="https://stockanalysis.com/stocks/nvda/">StockAnalysis · NVIDIA</a>
+        <a href="https://stockanalysis.com/stocks/meta/statistics/">StockAnalysis · Meta Statistics</a>
+        <a href="https://www.microsoft.com/en-us/Investor/earnings">Microsoft Investor Relations</a>
+        <a href="https://abc.xyz/investor/">Alphabet Investor Relations</a>
+        <a href="https://ir.aboutamazon.com/quarterly-results/default.aspx">Amazon Investor Relations</a>
+      </div>
+      <div class="footer-note">Version 0.1 · 기준일 2026-05-25 · 단일 HTML 리포트</div>
+    </section>
+  </main>
+</body>
+</html>
