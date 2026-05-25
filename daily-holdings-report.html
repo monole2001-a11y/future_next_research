@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>보유 ETF 데일리 리포트 | SOXL · SOXS · TIGER K방산&우주</title>
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --surface: #16161d;
+      --surface2: #1e1e28;
+      --border: #2a2a38;
+      --accent: #7c6ef7;
+      --accent2: #56cfb2;
+      --accent3: #f7a24b;
+      --warn: #f76b6b;
+      --blue: #63a7ff;
+      --text: #e8e8f0;
+      --text-muted: #9a9aaa;
+      --text-dim: #626276;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Pretendard', 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.7;
+      padding-bottom: 72px;
+    }
+    a { color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(86,207,178,0.35); }
+    a:hover { color: #8ff2dc; }
+    .hero {
+      background: linear-gradient(135deg, #191331 0%, #10212f 48%, #11151f 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 58px 32px 46px;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+    .tag {
+      display: inline-block;
+      color: #b8afff;
+      background: rgba(124,110,247,0.15);
+      border: 1px solid rgba(124,110,247,0.35);
+      border-radius: 999px;
+      padding: 5px 13px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .lead { color: var(--text-muted); max-width: 760px; font-size: 15px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 22px; color: var(--text-dim); font-size: 13px; }
+    .meta strong { color: var(--text-muted); }
+    .notice {
+      margin-top: 24px;
+      background: rgba(247,162,75,0.09);
+      border: 1px solid rgba(247,162,75,0.28);
+      border-radius: 14px;
+      padding: 16px 18px;
+      color: #d7c7b6;
+      font-size: 14px;
+    }
+    .section { margin-top: 46px; }
+    .section h2 { font-size: 21px; margin-bottom: 16px; letter-spacing: -0.02em; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+    .card, .table-wrap, .box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+    .card { padding: 20px; position: relative; overflow: hidden; }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--card-color, var(--accent)); }
+    .label { color: var(--text-muted); font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 9px; }
+    .value { color: var(--card-color, var(--accent)); font-size: 28px; line-height: 1; font-weight: 850; margin-bottom: 8px; }
+    .desc { color: var(--text-muted); font-size: 13px; }
+    .badge {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 800;
+      white-space: nowrap;
+      margin-bottom: 10px;
+    }
+    .green { color: var(--accent2); background: rgba(86,207,178,0.14); border: 1px solid rgba(86,207,178,0.3); }
+    .yellow { color: var(--accent3); background: rgba(247,162,75,0.14); border: 1px solid rgba(247,162,75,0.3); }
+    .red { color: var(--warn); background: rgba(247,107,107,0.14); border: 1px solid rgba(247,107,107,0.3); }
+    .purple { color: #b8afff; background: rgba(124,110,247,0.14); border: 1px solid rgba(124,110,247,0.3); }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 13px; }
+    th { text-align: left; background: var(--surface2); color: var(--text-muted); padding: 13px 14px; white-space: nowrap; }
+    td { padding: 13px 14px; border-top: 1px solid var(--border); color: var(--text-muted); vertical-align: top; }
+    td strong { color: var(--text); }
+    .box { padding: 20px; }
+    .box ul { list-style: none; display: grid; gap: 9px; }
+    .box li { color: var(--text-muted); font-size: 14px; border-top: 1px solid rgba(42,42,56,0.7); padding-top: 9px; }
+    .box li:first-child { border-top: 0; padding-top: 0; }
+    .sources { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+    .sources a { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; font-size: 13px; }
+    @media (max-width: 720px) {
+      .hero { padding: 46px 18px 38px; }
+      .wrap { padding: 0 16px; }
+      .grid { grid-template-columns: 1fr; }
+      table { min-width: 680px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="tag">Daily Holdings Report</div>
+      <h1>SOXL · SOXS · TIGER K방산&우주<br />보유 ETF 데일리 리포트</h1>
+      <p class="lead">레버리지 반도체 ETF와 한국 우주·방산 테마 ETF를 매일 관찰하기 위한 리서치 페이지입니다. 단기 매매 신호가 아니라 변동성, 추세, 리스크, 다음 세션 체크포인트를 정리합니다.</p>
+      <div class="meta">
+        <div><strong>초기 작성</strong> 2026-05-26 KST</div>
+        <div><strong>자동 업데이트</strong> 매일 07:30 KST</div>
+        <div><strong>대상</strong> SOXL, SOXS, 463250</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="notice">
+      이 페이지는 교육·리서치 목적이며 매수/매도 추천이 아닙니다. SOXL/SOXS는 일일 3배 레버리지 ETF라 장기 보유 시 복리 경로, 변동성, 괴리율, 리밸런싱 비용이 성과를 크게 흔들 수 있습니다.
+    </div>
+
+    <section class="section">
+      <h2>오늘의 핵심 상태</h2>
+      <div class="grid">
+        <div class="card" style="--card-color: var(--accent);"><div class="label">SOXL</div><div class="value">3x Long</div><div class="desc">NYSE Semiconductor Index 일간 수익률의 300%를 목표로 하는 공격형 반도체 레버리지 ETF입니다.</div></div>
+        <div class="card" style="--card-color: var(--warn);"><div class="label">SOXS</div><div class="value">3x Inverse</div><div class="desc">동일 반도체 지수의 일간 -300%를 목표로 하며, 추세 반전·헤지 목적 외 장기 보유 리스크가 큽니다.</div></div>
+        <div class="card" style="--card-color: var(--accent2);"><div class="label">TIGER K방산&우주</div><div class="value">463250</div><div class="desc">iSelect 스페이스테크 지수를 추종하며 국내 우주항공, AI, 로봇, 3D프린터 관련 종목에 투자합니다.</div></div>
+        <div class="card" style="--card-color: var(--accent3);"><div class="label">Update Note</div><div class="value">Daily</div><div class="desc">다음 자동 실행부터 가격, 1일/5일 변화, 뉴스 촉매, 리스크 메모가 날짜별로 갱신됩니다.</div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>관찰 테이블</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>종목</th><th>역할</th><th>오늘 볼 것</th><th>핵심 리스크</th><th>출처</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>SOXL</strong></td><td><span class="badge purple">반도체 상승 베팅</span></td><td>NVDA, AVGO, AMD, MU, SOXX/ICESEMIT 흐름과 미국 장기금리</td><td>하락장에서 손실이 3배로 확대되고 횡보장에서도 변동성 손실 발생</td><td><a href="https://www.direxion.com/product/daily-semiconductor-bull-bear-3x-etfs">Direxion</a></td></tr>
+            <tr><td><strong>SOXS</strong></td><td><span class="badge red">반도체 하락/헤지</span></td><td>반도체 고점 부담, 금리 상승, NVIDIA 실적 기대치 변화</td><td>반도체 상승 추세가 지속되면 빠르게 가치가 훼손될 수 있음</td><td><a href="https://www.direxion.com/product/daily-semiconductor-bull-bear-3x-etfs">Direxion</a></td></tr>
+            <tr><td><strong>463250</strong></td><td><span class="badge green">우주·방산 테마</span></td><td>방산 수출 뉴스, 정부 예산, 한화에어로스페이스/현대로템 등 구성종목 흐름</td><td>테마 쏠림, 국내 중소형주 변동성, 정책·수주 지연</td><td><a href="https://www.k-etf.com/etf/463250">K-ETF</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>내일 아침 업데이트 체크리스트</h2>
+      <div class="box">
+        <ul>
+          <li><strong>SOXL/SOXS:</strong> SOXX 또는 ICE Semiconductor Index의 일간 변화가 3배 ETF 수익률과 크게 벌어졌는지 확인합니다.</li>
+          <li><strong>반도체 촉매:</strong> NVIDIA, Broadcom, AMD, Micron, ASML, TSMC 관련 뉴스와 금리 변화를 함께 봅니다.</li>
+          <li><strong>463250:</strong> NAV, 괴리율, 거래대금, 방산/우주 구성종목 주가 기여도를 확인합니다.</li>
+          <li><strong>리스크:</strong> 레버리지 ETF는 방향보다 경로가 중요하므로 5일 누적 수익률과 변동성을 같이 기록합니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Sources</h2>
+      <div class="sources">
+        <a href="https://www.direxion.com/product/daily-semiconductor-bull-bear-3x-etfs">Direxion · SOXL/SOXS fund information</a>
+        <a href="https://www.k-etf.com/etf/463250">K-ETF · TIGER K방산&우주 463250</a>
+        <a href="https://www.tigeretf.com/">Mirae Asset TIGER ETF</a>
+        <a href="https://www.nasdaq.com/market-activity/etf/soxl">Nasdaq · SOXL quote</a>
+        <a href="https://www.nasdaq.com/market-activity/etf/soxs">Nasdaq · SOXS quote</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
