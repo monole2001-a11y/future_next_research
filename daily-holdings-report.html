@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>보유 ETF 데일리 리포트 | SOXL · SOXS · TIGER K방산&우주</title>
+  <title>보유 ETF 데일리 리포트 | SOXL · SOXS · TIGER 미국우주테크</title>
   <style>
     :root {
       --bg: #0f0f13;
@@ -69,6 +69,7 @@
     .section { margin-top: 46px; }
     .section h2 { font-size: 21px; margin-bottom: 16px; letter-spacing: -0.02em; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .card, .table-wrap, .box {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -98,15 +99,30 @@
     td { padding: 13px 14px; border-top: 1px solid var(--border); color: var(--text-muted); vertical-align: top; }
     td strong { color: var(--text); }
     .box { padding: 20px; }
+    .box h3 { font-size: 16px; margin-bottom: 10px; }
+    .box p { color: var(--text-muted); font-size: 14px; margin-bottom: 10px; }
     .box ul { list-style: none; display: grid; gap: 9px; }
     .box li { color: var(--text-muted); font-size: 14px; border-top: 1px solid rgba(42,42,56,0.7); padding-top: 9px; }
     .box li:first-child { border-top: 0; padding-top: 0; }
     .sources { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
     .sources a { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; font-size: 13px; }
+    .bar-item { margin-bottom: 14px; }
+    .bar-label { display: flex; justify-content: space-between; gap: 10px; color: var(--text-muted); font-size: 13px; margin-bottom: 6px; }
+    .bar-label strong { color: var(--text); }
+    .bar-track { height: 8px; border-radius: 99px; overflow: hidden; background: var(--surface2); }
+    .bar-fill { height: 100%; width: var(--w); border-radius: 99px; background: var(--bar-color, var(--accent)); }
+    .timeline { display: grid; gap: 12px; }
+    .timeline-row { display: grid; grid-template-columns: 110px 1fr; gap: 14px; border-top: 1px solid rgba(42,42,56,0.8); padding-top: 12px; }
+    .timeline-row:first-child { border-top: 0; padding-top: 0; }
+    .time { color: var(--text-muted); font-size: 13px; font-weight: 800; }
+    .timeline-row h3 { font-size: 15px; margin-bottom: 4px; }
+    .timeline-row p { color: var(--text-muted); font-size: 14px; margin: 0; }
     @media (max-width: 720px) {
       .hero { padding: 46px 18px 38px; }
       .wrap { padding: 0 16px; }
       .grid { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .timeline-row { grid-template-columns: 1fr; gap: 4px; }
       table { min-width: 680px; }
     }
   </style>
@@ -115,19 +131,19 @@
   <header class="hero">
     <div class="wrap">
       <div class="tag">Daily Holdings Report</div>
-      <h1>SOXL · SOXS · TIGER K방산&우주<br />보유 ETF 데일리 리포트</h1>
-      <p class="lead">레버리지 반도체 ETF와 한국 우주·방산 테마 ETF를 매일 관찰하기 위한 리서치 페이지입니다. 단기 매매 신호가 아니라 변동성, 추세, 리스크, 다음 세션 체크포인트를 정리합니다.</p>
+      <h1>SOXL · SOXS · TIGER 미국우주테크<br />보유 ETF 데일리 리포트</h1>
+      <p class="lead">레버리지 반도체 ETF와 국내 상장 미국 우주테크 ETF를 매일 관찰하기 위한 리서치 페이지입니다. 단기 매매 신호가 아니라 변동성, 추세, 리스크, 6월 말까지의 체크포인트를 정리합니다.</p>
       <div class="meta">
         <div><strong>초기 작성</strong> 2026-05-26 KST</div>
         <div><strong>자동 업데이트</strong> 매일 07:30 KST</div>
-        <div><strong>대상</strong> SOXL, SOXS, 463250</div>
+        <div><strong>대상</strong> SOXL, SOXS, 0183J0</div>
       </div>
     </div>
   </header>
 
   <main class="wrap">
     <div class="notice">
-      이 페이지는 교육·리서치 목적이며 매수/매도 추천이 아닙니다. SOXL/SOXS는 일일 3배 레버리지 ETF라 장기 보유 시 복리 경로, 변동성, 괴리율, 리밸런싱 비용이 성과를 크게 흔들 수 있습니다.
+      이 페이지는 교육·리서치 목적이며 매수/매도 추천이 아닙니다. SOXL/SOXS는 일일 3배 레버리지 ETF라 장기 보유 시 복리 경로, 변동성, 괴리율, 리밸런싱 비용이 성과를 크게 흔들 수 있습니다. TIGER 미국우주테크는 순수 뉴스페이스 기업 집중도가 높아 개별 발사 일정·수주·실적 뉴스에 민감합니다.
     </div>
 
     <section class="section">
@@ -135,8 +151,8 @@
       <div class="grid">
         <div class="card" style="--card-color: var(--accent);"><div class="label">SOXL</div><div class="value">3x Long</div><div class="desc">NYSE Semiconductor Index 일간 수익률의 300%를 목표로 하는 공격형 반도체 레버리지 ETF입니다.</div></div>
         <div class="card" style="--card-color: var(--warn);"><div class="label">SOXS</div><div class="value">3x Inverse</div><div class="desc">동일 반도체 지수의 일간 -300%를 목표로 하며, 추세 반전·헤지 목적 외 장기 보유 리스크가 큽니다.</div></div>
-        <div class="card" style="--card-color: var(--accent2);"><div class="label">TIGER K방산&우주</div><div class="value">463250</div><div class="desc">iSelect 스페이스테크 지수를 추종하며 국내 우주항공, AI, 로봇, 3D프린터 관련 종목에 투자합니다.</div></div>
-        <div class="card" style="--card-color: var(--accent3);"><div class="label">Update Note</div><div class="value">Daily</div><div class="desc">다음 자동 실행부터 가격, 1일/5일 변화, 뉴스 촉매, 리스크 메모가 날짜별로 갱신됩니다.</div></div>
+        <div class="card" style="--card-color: var(--accent2);"><div class="label">TIGER 미국우주테크</div><div class="value">0183J0</div><div class="desc">Akros U.S. Space Tech 지수를 추종하는 국내 상장 해외주식형 ETF입니다. 순수 민간 우주 기업 10개 종목에 집중 투자합니다.</div></div>
+        <div class="card" style="--card-color: var(--accent3);"><div class="label">AUM Milestone</div><div class="value">1조+</div><div class="desc">2026년 5월 22일 보도 기준 순자산 1조 원 돌파. 5월 21일 기준 상위 4개 뉴스페이스 기업 비중 약 72%입니다.</div></div>
       </div>
     </section>
 
@@ -150,9 +166,54 @@
           <tbody>
             <tr><td><strong>SOXL</strong></td><td><span class="badge purple">반도체 상승 베팅</span></td><td>NVDA, AVGO, AMD, MU, SOXX/ICESEMIT 흐름과 미국 장기금리</td><td>하락장에서 손실이 3배로 확대되고 횡보장에서도 변동성 손실 발생</td><td><a href="https://www.direxion.com/product/daily-semiconductor-bull-bear-3x-etfs">Direxion</a></td></tr>
             <tr><td><strong>SOXS</strong></td><td><span class="badge red">반도체 하락/헤지</span></td><td>반도체 고점 부담, 금리 상승, NVIDIA 실적 기대치 변화</td><td>반도체 상승 추세가 지속되면 빠르게 가치가 훼손될 수 있음</td><td><a href="https://www.direxion.com/product/daily-semiconductor-bull-bear-3x-etfs">Direxion</a></td></tr>
-            <tr><td><strong>463250</strong></td><td><span class="badge green">우주·방산 테마</span></td><td>방산 수출 뉴스, 정부 예산, 한화에어로스페이스/현대로템 등 구성종목 흐름</td><td>테마 쏠림, 국내 중소형주 변동성, 정책·수주 지연</td><td><a href="https://www.k-etf.com/etf/463250">K-ETF</a></td></tr>
+            <tr><td><strong>0183J0</strong></td><td><span class="badge green">미국 뉴스페이스 집중</span></td><td>Rocket Lab, Intuitive Machines, Redwire, AST SpaceMobile 등 상위 비중 기업의 수주·발사·실적 뉴스</td><td>10종목 집중, 상위 4개 종목 쏠림, 원/달러 환율, 신생 우주기업의 손익 변동성</td><td><a href="https://www.k-etf.com/etf/0183J0">K-ETF</a></td></tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>6월 말까지의 전망 프레임</h2>
+      <div class="two-col">
+        <div class="box">
+          <h3>반도체 레버리지: SOXL / SOXS</h3>
+          <p>6월까지는 AI 인프라 CAPEX, NVIDIA 생태계 기대, 미국 장기금리와 달러가 방향성을 가를 가능성이 큽니다.</p>
+          <ul>
+            <li><strong>SOXL에 우호적인 조건:</strong> 반도체 실적 가이던스 상향, 금리 안정, AI 서버 수요 지속, HBM/네트워킹 공급 병목 완화.</li>
+            <li><strong>SOXS가 민감한 조건:</strong> AI 고평가 논쟁, 금리 재상승, 대형 반도체주 실적 기대 미달, 수출통제·지정학 리스크 확대.</li>
+            <li><strong>공통 주의:</strong> 둘 다 일간 3배 상품이라 6월까지의 보유 성과는 “방향”뿐 아니라 중간 변동성 경로에 크게 좌우됩니다.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>미국 우주테크: TIGER 0183J0</h3>
+          <p>상장 직후 자금 유입과 뉴스페이스 주도주 집중도가 높은 상품입니다. 6월까지는 테마 수급과 개별 이벤트의 영향이 큽니다.</p>
+          <ul>
+            <li><strong>우호적 조건:</strong> Rocket Lab 발사·수주 모멘텀, AST SpaceMobile 통신 위성 뉴스, Intuitive Machines 달 탐사/계약 뉴스, 미국 우주 예산 기대.</li>
+            <li><strong>부담 조건:</strong> 단기 급등 후 차익실현, 구성종목 실적 적자 확대, 발사 지연, 원/달러 환율 하락.</li>
+            <li><strong>관찰 포인트:</strong> 순자산 증가가 계속되는지, 거래대금이 유지되는지, NAV 대비 괴리율이 커지지 않는지 확인합니다.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>6월 체크포인트 중요도</h2>
+      <div class="box">
+        <div class="bar-item"><div class="bar-label"><strong>미국 10년물 금리 / 달러</strong><span>매우 높음</span></div><div class="bar-track"><div class="bar-fill" style="--w:94%; --bar-color: var(--accent3);"></div></div></div>
+        <div class="bar-item"><div class="bar-label"><strong>NVIDIA·Broadcom·AMD 관련 AI 수요 뉴스</strong><span>매우 높음</span></div><div class="bar-track"><div class="bar-fill" style="--w:92%; --bar-color: var(--accent);"></div></div></div>
+        <div class="bar-item"><div class="bar-label"><strong>Rocket Lab / ASTS / LUNR / RDW 개별 뉴스</strong><span>높음</span></div><div class="bar-track"><div class="bar-fill" style="--w:86%; --bar-color: var(--accent2);"></div></div></div>
+        <div class="bar-item"><div class="bar-label"><strong>ETF 괴리율·거래대금·순자산 흐름</strong><span>높음</span></div><div class="bar-track"><div class="bar-fill" style="--w:80%; --bar-color: var(--blue);"></div></div></div>
+        <div class="bar-item"><div class="bar-label"><strong>미국 CPI/FOMC 발언 등 매크로 이벤트</strong><span>중상</span></div><div class="bar-track"><div class="bar-fill" style="--w:74%; --bar-color: var(--warn);"></div></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>6월 관찰 타임라인</h2>
+      <div class="box timeline">
+        <div class="timeline-row"><div class="time">5월 말</div><div><h3>포지션 성격 재확인</h3><p>SOXL/SOXS는 방향성 트레이드인지 헤지인지 구분하고, TIGER 미국우주테크는 테마 수급 과열 여부를 먼저 확인합니다.</p></div></div>
+        <div class="timeline-row"><div class="time">6월 초</div><div><h3>반도체 추세 유지 여부</h3><p>AI 반도체 대형주의 실적 후속 뉴스, 애널리스트 추정치 변화, 금리 방향이 SOXL/SOXS의 단기 우위를 가릅니다.</p></div></div>
+        <div class="timeline-row"><div class="time">6월 중순</div><div><h3>매크로 이벤트와 변동성</h3><p>CPI, FOMC 커뮤니케이션, 유가·달러 변화가 고변동 성장 테마의 멀티플을 흔들 수 있습니다.</p></div></div>
+        <div class="timeline-row"><div class="time">6월 말</div><div><h3>성과와 리스크 재평가</h3><p>6월 누적 성과를 가격만 보지 말고 변동성, 괴리율, 순자산 흐름, 뉴스의 질과 함께 평가합니다.</p></div></div>
       </div>
     </section>
 
@@ -162,7 +223,7 @@
         <ul>
           <li><strong>SOXL/SOXS:</strong> SOXX 또는 ICE Semiconductor Index의 일간 변화가 3배 ETF 수익률과 크게 벌어졌는지 확인합니다.</li>
           <li><strong>반도체 촉매:</strong> NVIDIA, Broadcom, AMD, Micron, ASML, TSMC 관련 뉴스와 금리 변화를 함께 봅니다.</li>
-          <li><strong>463250:</strong> NAV, 괴리율, 거래대금, 방산/우주 구성종목 주가 기여도를 확인합니다.</li>
+          <li><strong>0183J0:</strong> NAV, 괴리율, 거래대금, 순자산 흐름, Rocket Lab/Intuitive Machines/Redwire/AST SpaceMobile 주가 기여도를 확인합니다.</li>
           <li><strong>리스크:</strong> 레버리지 ETF는 방향보다 경로가 중요하므로 5일 누적 수익률과 변동성을 같이 기록합니다.</li>
         </ul>
       </div>
@@ -172,8 +233,10 @@
       <h2>Sources</h2>
       <div class="sources">
         <a href="https://www.direxion.com/product/daily-semiconductor-bull-bear-3x-etfs">Direxion · SOXL/SOXS fund information</a>
-        <a href="https://www.k-etf.com/etf/463250">K-ETF · TIGER K방산&우주 463250</a>
+        <a href="https://www.k-etf.com/etf/0183J0">K-ETF · TIGER 미국우주테크 0183J0</a>
         <a href="https://www.tigeretf.com/">Mirae Asset TIGER ETF</a>
+        <a href="https://www.newsis.com/view/NISX20260522_0003641485">Newsis · TIGER 미국우주테크 순자산 1조 원 돌파</a>
+        <a href="https://www.yna.co.kr/view/AKR20260507051200008">Yonhap · TIGER 미국우주테크 5,000억 원 돌파</a>
         <a href="https://www.nasdaq.com/market-activity/etf/soxl">Nasdaq · SOXL quote</a>
         <a href="https://www.nasdaq.com/market-activity/etf/soxs">Nasdaq · SOXS quote</a>
       </div>
