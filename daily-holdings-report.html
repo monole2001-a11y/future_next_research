@@ -72,6 +72,30 @@
       letter-spacing: -0.02em;
       margin-bottom: 14px;
     }
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .section-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue);
+      color: #08111e;
+      font-size: 12px;
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+    .section-copy {
+      color: var(--muted);
+      font-size: 14px;
+      margin: -4px 0 14px;
+    }
     .notice, .box, .table-wrap, .card {
       background: rgba(19,26,35,0.92);
       border: 1px solid var(--border);
@@ -226,7 +250,8 @@
     </section>
 
     <section class="section">
-      <h2>오늘의 핵심 숫자</h2>
+      <div class="section-label"><div class="section-num">1</div><h2>오늘의 핵심 숫자</h2></div>
+      <p class="section-copy">미국 반도체 추세, Tesla의 옵션 가치, 뉴스페이스 수급 과열 여부를 한 장에서 빠르게 확인하는 구간입니다.</p>
       <div class="grid">
         <div class="card" style="--accent: var(--long);">
           <div class="label">SOXL</div>
@@ -257,7 +282,7 @@
     </section>
 
     <section class="section">
-      <h2>관찰 테이블</h2>
+      <div class="section-label"><div class="section-num">2</div><h2>관찰 테이블</h2></div>
       <div class="table-wrap">
         <table>
           <thead>
@@ -309,7 +334,50 @@
     </section>
 
     <section class="section">
-      <h2>반도체와 나스닥 컨텍스트</h2>
+      <div class="section-label"><div class="section-num">3</div><h2>리서치 대시보드 연결</h2></div>
+      <p class="section-copy">이 페이지는 메인 리서치 대시보드의 장기 산업 프레임을 데일리 관찰 자산에 연결하는 보조 페이지입니다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>보유 자산</th>
+              <th>메인 대시보드 섹터</th>
+              <th>오늘 연결해서 볼 것</th>
+              <th>왜 중요한가</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SOXL / SOXS</strong></td>
+              <td>반도체, AI 인프라</td>
+              <td>NVDA/AMD/AVGO, HBM, 금리, 데이터센터 CAPEX</td>
+              <td>메인 대시보드의 가장 강한 실적/수급 축이라 단기 시장 리더십을 먼저 반영합니다.</td>
+            </tr>
+            <tr>
+              <td><strong>TSLA</strong></td>
+              <td>로봇, 에너지 전환, AI 소프트웨어</td>
+              <td>EV 수요와 마진, FSD/로보택시, Megapack, Optimus</td>
+              <td>자동차 본업보다 다중 옵션 가치가 크기 때문에 대시보드의 여러 성장 테마를 동시에 압축합니다.</td>
+            </tr>
+            <tr>
+              <td><strong>0183J0</strong></td>
+              <td>우주/방산</td>
+              <td>Rocket Lab, ASTS, Intuitive Machines, Redwire backlog와 발사 일정</td>
+              <td>메인 대시보드에서 가장 테마 수급 탄력이 큰 뉴스페이스 프록시입니다.</td>
+            </tr>
+            <tr>
+              <td><strong>섹터 로테이션</strong></td>
+              <td>전력, 보안, 산업재</td>
+              <td>반도체 다음 자금이 power grid, cybersecurity, automation으로 번지는지</td>
+              <td>메인 대시보드의 “AI가 물리 인프라까지 확산된다”는 가설이 실제 시장 순환으로 확인되는 구간입니다.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label"><div class="section-num">4</div><h2>반도체와 나스닥 컨텍스트</h2></div>
       <div class="two-col">
         <div class="box">
           <h3>반도체 리더십은 아직 살아 있습니다</h3>
@@ -333,7 +401,7 @@
     </section>
 
     <section class="section">
-      <h2>Tesla 맥락</h2>
+      <div class="section-label"><div class="section-num">5</div><h2>Tesla 맥락</h2></div>
       <div class="two-col">
         <div class="box">
           <h3>EV 수요와 마진: 나쁘기만 한 그림은 아닙니다</h3>
@@ -365,7 +433,7 @@
     </section>
 
     <section class="section">
-      <h2>TIGER 미국우주테크 맥락</h2>
+      <div class="section-label"><div class="section-num">6</div><h2>TIGER 미국우주테크 맥락</h2></div>
       <div class="two-col">
         <div class="box">
           <h3>순수 뉴스페이스 집중 ETF</h3>
@@ -398,7 +466,7 @@
     </section>
 
     <section class="section">
-      <h2>최근 24시간과 근접 촉매</h2>
+      <div class="section-label"><div class="section-num">7</div><h2>최근 24시간과 근접 촉매</h2></div>
       <div class="box">
         <ul>
           <li><strong>반도체/나스닥:</strong> 2026년 5월 26일 미국장 초반 SOXL +14%, SOXS -15.9%, SOXX +4.9% 수준으로 출발해 반도체 강세가 재확인됐습니다.</li>
@@ -410,7 +478,7 @@
     </section>
 
     <section class="section">
-      <h2>5월 말-6월-7월 섹터 로테이션 전망</h2>
+      <div class="section-label"><div class="section-num">8</div><h2>5월 말-6월-7월 섹터 로테이션 전망</h2></div>
       <div class="two-col">
         <div class="box">
           <h3>가장 유력한 다음 후보: 전력·유틸리티·그리드 장비</h3>
@@ -443,7 +511,7 @@
     </section>
 
     <section class="section">
-      <h2>6월 말까지의 워치포인트</h2>
+      <div class="section-label"><div class="section-num">9</div><h2>6월 말까지의 워치포인트</h2></div>
       <div class="box">
         <ul>
           <li><strong>SOXL/SOXS:</strong> SOXX가 계속 나스닥보다 강한지, 아니면 금리·차익실현으로 반도체 리더십이 약해지는지.</li>
@@ -456,7 +524,7 @@
     </section>
 
     <section class="section">
-      <h2>Sources</h2>
+      <div class="section-label"><div class="section-num">10</div><h2>Sources</h2></div>
       <div class="sources">
         <a href="https://stockanalysis.com/etf/soxl/history/">Stock Analysis · SOXL historical data and live quote</a>
         <a href="https://stockanalysis.com/etf/soxs/history/">Stock Analysis · SOXS historical data and live quote</a>
